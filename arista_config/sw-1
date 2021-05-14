@@ -1,0 +1,27 @@
+! Command: show running-config
+! device: sw224 (vEOS, EOS-4.22.0F)
+!
+! boot system flash:/vEOS-lab.swi
+!
+transceiver qsfp default-mode 4x10G
+!
+hostname sw224
+!
+spanning-tree mode mstp
+!
+no aaa root
+!
+username admin role network-admin secret sha512 $6$C0tdG6/cNhj2X0AF$hPpFf0ZXbSvCcF8j6SuITA9tGpiQ.3IypX.xoXEeglQIh8Dp0k8RFg18hn/iHv6CI59DzrJXBo5o3sm.viQMY/
+!
+interface Management1
+   mtu 1450
+   ip address dhcp
+   dhcp client accept default-route
+!
+no ip routing
+!
+management api http-commands
+   protocol http
+   no shutdown
+!
+end
